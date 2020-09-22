@@ -6,6 +6,8 @@ import com.app.schedule.service.IScheduleJobService
 import com.app.schedule.utils.ValidatorUtils.validateEntity
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
 import javax.annotation.Resource
 
@@ -19,7 +21,7 @@ import javax.annotation.Resource
 @RestController
 @RequestMapping("/sys/schedule")
 class QuartzApiController {
-    @Resource
+    @Autowired
     private val scheduleJobService: IScheduleJobService? = null
 
     /**
@@ -47,6 +49,7 @@ class QuartzApiController {
      */
     @ApiOperation(value = "保存定时任务", notes = "保存定时任务")
     @PostMapping("/save")
+    @Transactional
     fun save(@RequestBody scheduleJob: ScheduleJobEntity?): ResultMap {
         validateEntity(scheduleJob!!)
         scheduleJobService!!.insert(scheduleJob)

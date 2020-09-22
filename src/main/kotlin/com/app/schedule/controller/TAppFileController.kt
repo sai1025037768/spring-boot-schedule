@@ -2,6 +2,7 @@ package com.app.schedule.controller
 
 import com.app.schedule.entity.TAppFile
 import com.app.schedule.service.TAppFileService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -19,7 +20,7 @@ class TAppFileController {
     /**
      * 服务对象
      */
-    @Resource
+    @Autowired
     private val tAppFileService: TAppFileService? = null
 
     /**
@@ -29,7 +30,7 @@ class TAppFileController {
      * @return 单条数据
      */
     @GetMapping("selectOne")
-    fun selectOne(id: Int?): TAppFile? {
+    fun selectOne(id: Int): TAppFile? {
         return tAppFileService!!.queryById(id)
     }
 }

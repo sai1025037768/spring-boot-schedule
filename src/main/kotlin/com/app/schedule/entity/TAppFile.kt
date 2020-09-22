@@ -1,5 +1,6 @@
 package com.app.schedule.entity
 
+import com.baomidou.mybatisplus.annotation.TableId
 import java.io.Serializable
 
 /**
@@ -9,6 +10,8 @@ import java.io.Serializable
  * @since 2020-09-19 18:59:53
  */
 class TAppFile : Serializable {
+
+    @TableId
     var id: Int? = null
     var jobId: String? = null
     var appName: String? = null
